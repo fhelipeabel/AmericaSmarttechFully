@@ -1,0 +1,231 @@
+<style>
+/* =========================
+   0) RESETES DA HERO
+   — back to original layout
+   — sem overlays / sem glass
+   ========================= */
+
+/* Layout original (texto à esquerda, SVG à direita) */
+.as-hero{
+  padding-top:0; padding-bottom:20px;
+  padding-left:20px; padding-right:20px;
+  background: radial-gradient(1200px 600px at 85% -10%, rgba(27,179,167,.12), transparent);
+}
+.as-hero__container{
+  max-width: var(--max, 1200px);
+  margin-top: -2rem;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+.as-hero__grid{
+  display: grid !important;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: center;
+  padding-left: 20px; padding-right: 20px;
+}
+
+/* Remover QUALQUER efeito escurecido/vidro/overlay nesta seção */
+.as-hero::before,
+.as-hero::after{ display:none !important; }
+.as-hero__blob{ display:none !important; }
+#hero *{
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important; /* evita blur acidental */
+}
+
+/* Ajustes contra sobreposição do header (mantendo seu comportamento) */
+#hero{
+  background: #204757;
+  background: radial-gradient(1200px 600px at 85% -10%, rgba(27,179,167,.35), transparent);
+  padding-top: calc(-84px + var(--header-height, 84px));
+  scroll-margin-top: calc(var(--header-height, 84px) + 16px);
+}
+.as-hero__container{ padding-top: calc(var(--header-height, 84px)/2); }
+
+/* Responsivo mantém sua lógica original */
+@media (max-width:980px){
+  .as-hero__grid{ grid-template-columns:1fr !important; }
+}
+
+/* =========================================
+   1) ESTILO NOVO — aplicado SOMENTE onde pediu
+   ========================================= */
+
+/* Eyebrow “Automação + Resultados” (pill limpa, sem blur) */
+.as-hero__eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:12px; padding:8px 12px; border-radius:999px;
+  font-weight:700; font-size:12px; line-height:1; letter-spacing:.12em; text-transform:uppercase;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.20);
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+}
+
+/* Título h1 — mantém seu clamp + cores em gradiente só nas spans */
+.as-hero__title{
+  margin: 16px 0 12px !important;
+  font: 800 clamp(28px,3.8vw + 8px,44px)/1.08 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif !important;
+  letter-spacing: -.3px;
+  color: #fff; /* texto base branco */
+}
+.as-hero__title .as-primary,
+.as-hero__title .as-accent{
+  background: linear-gradient(135deg, var(--primary, #0E4D7A), var(--accent, #1BB3A7));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* Lead mantém seu texto suave */
+.as-hero__lead{
+  margin:15px 0; font-size:18px; line-height:1.5;
+  color: rgba(255,255,255,.78); max-width:720px;
+  text-wrap: balance;
+}
+
+/* Badges — aplicar o “novo estilo” nos três chips solicitados */
+.as-hero__badges{ display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; }
+.as-hero__badge{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 600; font-size: 13px;
+  color: #7BE1D6;
+  box-shadow: 0 16px 30px rgba(0,0,0,0.8);
+}
+
+/* Ações — “Solicitar Contato” e “Ver o Sistema” com novo visual */
+.as-hero__actions{ display:flex; gap:16px; margin-top:28px; flex-wrap:wrap; }
+.as-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:12px 18px; border-radius:12px; font-weight:700; font-size:14px;
+  text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.5);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.as-btn--primary{
+  background: linear-gradient(135deg, var(--accent,#1BB3A7), var(--primary,#0E4D7A));
+  color:#03161F; border:1px solid rgba(255,255,255,.18);
+}
+.as-btn--primary:hover{ transform: translateY(-1px) scale(1.01); }
+.as-btn--outline{
+  background: transparent; color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:none;
+}
+.as-btn--outline:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px) scale(1.01); }
+
+/* Animações suaves apenas nos ícones (sem vidro) */
+.as-gear{ animation: as-spin 16s linear infinite; transform-origin:center; }
+.as-gear--sm{ animation-duration: 12s; }
+.as-float{ animation: as-float 6s ease-in-out infinite; }
+@keyframes as-spin{ to{ transform: rotate(360deg); } }
+@keyframes as-float{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
+
+</style>
+<section id="hero" class="as-hero" aria-label="Destaque principal" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 1), transparent); color: white;">
+  <div class="as-hero__container">
+    <div class="as-hero__grid">
+      <div class="sub-grid" style="margin-top: -15px">
+        <span class="as-hero__eyebrow">Automação + Resultados</span>
+        <h1 class="as-hero__title" style="font-family: nunito, Inter, sans-serif; font-weight: 800; font-size: 3.5rem; line-height: 1.1; margin-top: 12px; margin-bottom: 16px;">
+          Seu negócio mais inteligente com a
+          <span class="as-primary">América Smarttech</span> <span class="as-accent"></span>
+        </h1>
+        <p class="as-hero__lead">Tenha um sistema completo de gestão financeira, administrativa e fiscal para chamar de seu! Comece agora uma nova jornada rumo a uma parceria incrível e prepare-se para uma nova era de resultados!</p>
+        <div class="as-hero__badges" aria-label="Pontos-chave">
+          <span class="as-hero__badge">Seu sistema White Label</span>
+          <span class="as-hero__badge">Implantação &amp; Suporte</span>
+          <span class="as-hero__badge">Treinamentos</span>
+        </div>
+        <div class="as-hero__actions">
+          <a href="#contato" class="as-btn as-btn--primary">Solicitar Contato</a>
+          <a href="#oferecemos" class="as-btn as-btn--outline">Ver o Sistema <svg id="fi_2985150" enable-background="new 0 0 8 8" height="18" viewBox="0 0 128 128" width="18" xmlns="http://www.w3.org/2000/svg"><path id="Down_Arrow_3_" d="m64 88c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l37.172 37.172 37.172-37.172c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z" fill="#ffffff"></path></svg></a>
+        </div>
+      </div>
+      <div class="as-hero__art" aria-hidden="true">
+        <div class="as-hero__blob"></div>
+        <svg class="as-float" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+          <!-- ======= DEFINIÇÕES DO EFEITO DE VIDRO (GLASS) ======= -->
+          <defs>
+            <filter id="glass-blur" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="6" />
+            </filter>
+            <linearGradient id="glass-tint" x1="0" x2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+              <stop offset="100%" stop-color="#AEEBE3" stop-opacity=".08"/>
+            </linearGradient>
+            <linearGradient id="glass-shine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#ffffff" stop-opacity=".35"/>
+              <stop offset="30%"  stop-color="#ffffff" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <!-- Recorte da “tela” — AJUSTADO (+100% largura, +50% altura, -30px X) -->
+            <clipPath id="panel-clip">
+              <rect x="70" y="90" width="360" height="180" rx="16" ry="16"/>
+            </clipPath>
+          </defs>
+
+          <!-- OUTRAS DEFINIÇÕES ORIGINAIS -->
+          <defs>
+            <linearGradient id="as-g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#0E4D7A"></stop>
+              <stop offset="100%" stop-color="#1BB3A7"></stop>
+            </linearGradient>
+          </defs>
+
+          <!-- CENA PRINCIPAL (com ID para o uso no vidro) -->
+          <g id="scene" transform="translate(120,5) scale(0.18)" opacity="0.95">
+            <g xmlns="http://www.w3.org/2000/svg" id="Layer_x0020_1">
+              <g fill="#08e8de">
+                <path d="m388 1271h-178c-11 0-20-9-20-20v-529c0-12 9-20 20-20h179c11 0 20 8 20 20v529c-1 11-9 20-21 20z"></path>
+                <path d="m649 1271h-178c-12 0-20-9-20-20v-389c0-11 8-20 20-20h178c11 0 20 9 20 20v389c0 11-9 20-20 20z"></path>
+                <path d="m909 1271h-178c-11 0-20-9-20-20v-286c0-11 9-20 20-20h178c11 0 20 9 20 20v286c0 11-9 20-20 20z"></path>
+                <path d="m1169 1271h-178c-11 0-20-9-20-20v-154c0-11 9-20 20-20h178c11 0 20 9 20 20v154c0 11-9 20-20 20z"></path>
+                <path d="m1348 1016c-86 0-156-65-166-148h158l109 114c-28 21-63 34-101 34zm-166-188c9-76 70-137 146-147v147zm186-147c83 10 148 81 148 167 0 41-14 78-38 107l-110-115z"></path>
+              </g>
+              <path d="m1585 1482h-1463c-67 0-122-55-122-122v-1013c0-67 55-122 122-122h1463c67 0 122 55 122 122v1013c0 67-55 122-122 122zm-56-1022c-45 0-82-37-82-82s37-82 82-82 82 37 82 82-37 82-82 82zm-185 0c-45 0-81-37-81-82s36-82 81-82 82 37 82 82-37 82-82 82zm-185 0c-45 0-81-37-81-82s36-82 81-82 82 37 82 82-37 82-82 82zm508 71h-1627v829c0 45 37 82 82 82h1463c45 0 82-37 82-82z" fill="#00203f"></path>
+              <path d="m1159 420c23 0 42-19 42-42s-19-42-42-42c-22 0-41 19-41 42s18 42 41 42z" fill="#08e8de"></path>
+              <path d="m1303 378c0 23 18 42 41 42s42-19 42-42-19-42-42-42-41 19-41 42z" fill="#08e8de"></path>
+              <path d="m1487 378c0 23 19 42 42 42s42-19 42-42-19-42-42-42-42 19-42 42z" fill="#08e8de"></path>
+            </g>
+          </g>
+
+          <!-- EFEITO GLASSMORPHISM CONFINADO À “TELA” -->
+          <g clip-path="url(#panel-clip)">
+            <!-- Fundo borrado (usa a cena como textura) -->
+            <g filter="url(#glass-blur)" opacity=".9">
+              <use href="#scene" />
+            </g>
+            <!-- Tinta translúcida do vidro -->
+            <rect x="120" y="90" width="360" height="180" rx="16" ry="16" fill="url(#glass-tint)"/>
+            <!-- Brilho superior -->
+            <rect x="120" y="90" width="360" height="60" rx="16" ry="16" fill="url(#glass-shine)"/>
+            <!-- Borda do vidro -->
+            <rect x="120" y="80.5" width="359" height="179" rx="15.5" ry="15.5" fill="none" stroke="rgba(255,255,255,.35)"/>
+          </g>
+
+          <!-- engrenagens -->
+          <g transform="translate(80,270) scale(1.1)" fill="#0E4D7A" opacity="0.95" class="as-gear">
+            <svg xmlns="http://www.w3.org/2000/svg" height="128pt" viewBox="0 0 512 512" width="128pt">
+              <path class="icon gear" d="m499.953125 197.703125-39.351563-8.554687c-3.421874-10.476563-7.660156-20.695313-12.664062-30.539063l21.785156-33.886719c3.890625-6.054687 3.035156-14.003906-2.050781-19.089844l-61.304687-61.304687c-5.085938-5.085937-13.035157-5.941406-19.089844-2.050781l-33.886719 21.785156c-9.84375-5.003906-20.0625-9.242188-30.539063-12.664062l-8.554687-39.351563c-1.527344-7.03125-7.753906-12.046875-14.949219-12.046875h-86.695312c-7.195313 0-13.421875 5.015625-14.949219 12.046875l-8.554687 39.351563c-10.476563 3.421874-20.695313 7.660156-30.539063 12.664062l-33.886719-21.785156c-6.054687-3.890625-14.003906-3.035156-19.089844 2.050781l-61.304687 61.304687c-5.085937 5.085938-5.941406 13.035157-2.050781 19.089844l21.785156 33.886719c-5.003906 9.84375-9.242188 20.0625-12.664062 30.539063l-39.351563 8.554687c-7.03125 1.53125-12.046875 7.753906-12.046875 14.949219v86.695312c0 7.195313 5.015625 13.417969 12.046875 14.949219l39.351563 8.554687c3.421874 10.476563 7.660156 20.695313 12.664062 30.539063l-21.785156 33.886719c-3.890625 6.054687-3.035156 14.003906 2.050781 19.089844l61.304687 61.304687c5.085938 5.085937 13.035157 5.941406 19.089844 2.050781l33.886719-21.785156c9.84375 5.003906 20.0625 9.242188 30.539063 12.664062l8.554687 39.351563c1.527344 7.03125 7.753906 12.046875 14.949219 12.046875h86.695312c7.195313 0 13.421875-5.015625 14.949219-12.046875l8.554687-39.351563c10.476563-3.421874 20.695313-7.660156 30.539063-12.664062l33.886719 21.785156c6.054687 3.890625 14.003906 3.039063 19.089844-2.050781l61.304687-61.304687c5.085937-5.085938 5.941406-13.035157 2.050781-19.089844l-21.785156-33.886719c5.003906-9.84375 9.242188-20.0625 12.664062-30.539063l39.351563-8.554687c7.03125-1.53125 12.046875-7.753906 12.046875-14.949219v-86.695312c0-7.195313-5.015625-13.417969-12.046875-14.949219zm-243.953125 180.6875c-67.484375 0-122.390625-54.90625-122.390625-122.390625s54.90625-122.390625 122.390625-122.390625 122.390625 54.90625 122.390625 122.390625-54.90625 122.390625-122.390625 122.390625zm0 0" fill="#0E4D7A"></path>
+              <path class="icon gear" d="m499.953125 197.703125-39.351563-8.554687c-3.421874-10.476563-7.660156-20.695313-12.664062-30.539063l21.785156-33.886719c3.890625-6.054687 3.035156-14.003906-2.050781-19.089844l-61.304687-61.304687c-5.085938-5.085937-13.035157-5.941406-19.089844-2.050781l-33.886719 21.785156c-9.84375-5.003906-20.0625-9.242188-30.539063-12.664062l-8.554687-39.351563c-1.527344-7.03125-7.753906-12.046875-14.949219-12.046875h-45.703125v133.640625c.785157-.015625 1.566407-.03125 2.355469-.03125 67.484375 0 122.390625 54.90625 122.390625 122.390625s-54.90625 122.390625-122.390625 122.390625c-.789062 0-1.570312-.015625-2.355469-.03125v133.640625h45.703125c7.195313 0 13.421875-5.015625 14.949219-12.046875l8.554687-39.351563c10.476563-3.421874 20.695313-7.660156 30.539063-12.664062l33.886719 21.785156c6.054687 3.890625 14.003906 3.039063 19.089844-2.050781l61.304687-61.304687c5.085937-5.085938 5.941406-13.035157 2.050781-19.089844l-21.785156-33.886719c5.003906-9.84375 9.242188-20.0625 12.664062-30.539063l39.351563-8.554687c7.03125-1.53125 12.046875-7.753906 12.046875-14.949219v-86.695312c0-7.195313-5.015625-13.417969-12.046875-14.949219zm0 0" fill="#184061"></path>
+            </svg>
+          </g>
+          <g transform="translate(190,330) scale(.8)" fill="#1BB3A7" opacity="0.95" class="as-gear as-gear--sm">
+            <svg width="128pt" viewBox="0 0 512 512" height="128pt" xmlns="http://www.w3.org/2000/svg">
+              <path class="icon gear" d="m499.953125 197.703125-39.351563-8.554687c-3.421874-10.476563-7.660156-20.695313-12.664062-30.539063l21.785156-33.886719c3.890625-6.054687 3.035156-14.003906-2.050781-19.089844l-61.304687-61.304687c-5.085938-5.085937-13.035157-5.941406-19.089844-2.050781l-33.886719 21.785156c-9.84375-5.003906-20.0625-9.242188-30.539063-12.664062l-8.554687-39.351563c-1.527344-7.03125-7.753906-12.046875-14.949219-12.046875h-86.695312c-7.195313 0-13.421875 5.015625-14.949219 12.046875l-8.554687 39.351563c-10.476563 3.421874-20.695313 7.660156-30.539063 12.664062l-33.886719-21.785156c-6.054687-3.890625-14.003906-3.035156-19.089844 2.050781l-61.304687 61.304687c-5.085938 5.085937-5.941406 13.035157-2.050781 19.089844l21.785156 33.886719c-5.003906 9.84375-9.242188 20.0625-12.664062 30.539063l-39.351563 8.554687c-7.03125 1.53125-12.046875 7.753906-12.046875 14.949219v86.695312c0 7.195313 5.015625 13.417969 12.046875 14.949219l39.351563 8.554687c3.421874 10.476563 7.660156 20.695313 12.664062 30.539063l-21.785156 33.886719c-3.890625 6.054687-3.035156 14.003906 2.050781 19.089844l61.304687 61.304687c5.085938 5.085937 13.035157 5.941406 19.089844 2.050781l33.886719-21.785156c9.84375 5.003906 20.0625 9.242188 30.539063 12.664062l8.554687 39.351563c1.527344 7.03125 7.753906 12.046875 14.949219 12.046875h86.695312c7.195313 0 13.421875-5.015625 14.949219-12.046875l8.554687-39.351563c10.476563-3.421874 20.695313-7.660156 30.539063-12.664062l33.886719 21.785156c6.054687 3.890625 14.003906 3.039063 19.089844-2.050781l61.304687-61.304687c5.085937-5.085938 5.941406-13.035157 2.050781-19.089844l-21.785156-33.886719c5.003906-9.84375 9.242188-20.0625 12.664062-30.539063l39.351563-8.554687c7.03125-1.53125 12.046875-7.753906 12.046875-14.949219v-86.695312c0-7.195313-5.015625-13.417969-12.046875-14.949219zm-243.953125 180.6875c-67.484375 0-122.390625-54.90625-122.390625-122.390625s54.90625-122.390625 122.390625-122.390625 122.390625 54.90625 122.390625 122.390625-54.90625 122.390625-122.390625 122.390625zm0 0" fill="#1BB3A7"></path>
+              <path class="icon gear" d="m499.953125 197.703125-39.351563-8.554687c-3.421874-10.476563-7.660156-20.695313-12.664062-30.539063l21.785156-33.886719c3.890625-6.054687 3.035156-14.003906-2.050781-19.089844l-61.304687-61.304687c-5.085938-5.085937-13.035157-5.941406-19.089844-2.050781l-33.886719 21.785156c-9.84375-5.003906-20.0625-9.242188-30.539063-12.664062l-8.554687-39.351563c-1.527344-7.03125-7.753906-12.046875-14.949219-12.046875h-45.703125v133.640625c.785157-.015625 1.566407-.03125 2.355469-.03125 67.484375 0 122.390625 54.90625 122.390625 122.390625s-54.90625 122.390625-122.390625 122.390625c-.789062 0-1.570312-.015625-2.355469-.03125v133.640625h45.703125c7.195313 0 13.421875-5.015625 14.949219-12.046875l8.554687-39.351563c10.476563-3.421874 20.695313-7.660156 30.539063-12.664062l33.886719 21.785156c6.054687 3.890625 14.003906 3.039063 19.089844-2.050781l61.304687-61.304687c5.085937-5.085938 5.941406-13.035157 2.050781-19.089844l-21.785156-33.886719c5.003906-9.84375 9.242188-20.0625 12.664062-30.539063l39.351563-8.554687c7.03125-1.53125 12.046875-7.753906 12.046875-14.949219v-86.695312c0-7.195313-5.015625-13.417969-12.046875-14.949219zm0 0" fill="#23998d"></path>
+            </svg>
+          </g>
+          <g transform="translate(40,340)" opacity="0.7">
+            <rect x="0" y="-8" width="120" height="16" rx="8" fill="#1BB3A7"></rect>
+            <rect x="140" y="-8" width="80" height="16" rx="8" fill="#0E4D7A"></rect>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

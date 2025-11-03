@@ -1,0 +1,166 @@
+<style>
+/* Variáveis de cor Smarttech */
+:root {
+  --primary: #0E4D7A;  /* azul escuro */
+  --accent:  #1BB3A7;  /* verde-água */
+  --text-dark: #03161F; /* cor de texto principal para fundos claros */
+}
+
+/* Footer de fundo branco */
+.as-footer {
+  background: #ffffff;
+  color: var(--text-dark);
+  font-family: Inter, system-ui, sans-serif;
+  padding: 60px 20px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.as-footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+/* Título de cada coluna */
+.as-footer h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  position: relative;
+  color: var(--primary);
+}
+
+.as-footer h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border-radius: 2px;
+}
+
+/* Lista de links */
+.as-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.as-footer li + li {
+  margin-top: 8px;
+}
+.as-footer a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 14px;
+  transition: color .2s;
+}
+.as-footer a:hover {
+  color: var(--accent);
+}
+
+/* Marca e descrição */
+.as-footer__brand .logo {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.as-footer__brand p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+}
+
+/* Redes sociais */
+.as-footer__social {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+.as-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+  color: var(--primary);
+  font-size: 18px;
+  transition: background .2s, color .2s;
+}
+.as-footer__social a:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* Créditos finais */
+.as-footer__credits {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(3,22,31,0.6);
+}
+</style>
+
+<footer class="as-footer">
+  <div class="as-footer__container">
+    <!-- Coluna 1: Marca -->
+    <div class="as-footer__brand">
+      <div class="logo"><img src="https://americasmarttech.com.br/wp-content/uploads/2025/10/Sem-nome-80-x-80-px.png"></div>
+      <p>
+        Soluções completas de automação, gestão e integração para o crescimento
+        do seu negócio. Tecnologia para resultados concretos.
+      </p>
+    </div>
+
+    <!-- Coluna 2: Navegação -->
+    <div>
+      <h3>Navegação</h3>
+      <ul>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="/demo">Demo</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#oferecemos">Como Funciona</a></li>
+        <li><a href="#software">Nosso Sistema</a></li>
+        <li><a href="#diferencial">Diferencial</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+
+    <!-- Coluna 3: Contato -->
+    <div>
+      <h3>Contato</h3>
+      <ul>
+        <li>Uberlândia – MG, Brasil</li>
+        <li>+55 (34) 99694-4108</li>
+        <li><a href="mailto:contato@americasmarttech.com.br">contato@americasmarttech.com.br</a></li>
+      </ul>
+      <div class="as-footer__social">
+        <a href="https://wa.me/5534996944108" target="_blank" title="WhatsApp">&#x1f4de;</a>
+        <a href="https://www.instagram.com/americasmarttech/" target="_blank" title="Instagram">&#x1f4f8;</a>
+        <a href="https://br.linkedin.com/americasmarttech" title="LinkedIn">&#x1f517;</a>
+      </div>
+    </div>
+
+    <!-- Coluna 4: Newsletter (opcional) -->
+    <div>
+      <h3>Newsletter</h3>
+      <p>Receba novidades e dicas para potencializar o seu negócio.</p>
+      <form onsubmit="event.preventDefault(); alert('Inscrição enviada!');">
+        <input type="email" name="email" placeholder="Seu e‑mail" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.1);margin-top:8px;">
+        <button type="submit" style="margin-top:10px;width:100%;padding:10px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--primary));color:#fff;font-weight:600;cursor:pointer;" href="#contato">Inscrever</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="as-footer__credits">
+    © 2025 América Smarttech – Todos os direitos reservados.
+  </div>
+</footer>

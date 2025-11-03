@@ -1,0 +1,135 @@
+<style>
+/* Paleta de cores da América Smarttech */
+:root {
+  --primary: #0E4D7A;  /* azul escuro */
+  --accent:  #1BB3A7;  /* verde-água */
+  --text:    #ffffff;  /* branco */
+}
+
+/* Seção de contato (blooco principal) */
+.as-contact {
+  padding: 40x 20px;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+}
+
+/* Contêiner central com largura limitada */
+.as-contact__container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 24px;
+  background: rgba(10, 20, 28, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Título principal */
+.as-contact__title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  color: var(--text);
+}
+.as-contact__title .as-primary,
+.as-contact__title .as-accent {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* Campos de entrada */
+.as-contact__form label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.as-contact__form input,
+.as-contact__form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 20px;
+  resize: vertical;
+}
+.as-contact__form input::placeholder,
+.as-contact__form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botão no estilo Smarttech */
+.as-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.as-btn--primary {
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+.as-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .as-contact__container {
+    padding: 24px;
+  }
+  .as-contact__title {
+    font-size: 28px;
+  }
+}
+</style>
+
+<section id="contato" class="as-contact">
+  <div class="as-contact__container">
+    <h2 class="as-contact__title">
+      Entre em contato com a <span class="as-primary">América</span> <span class="as-accent">Smarttech</span>
+    </h2>
+    <form class="as-contact__form" onsubmit="event.preventDefault(); enviarWhatsApp();">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva aqui sua mensagem" required></textarea>
+
+      <button type="submit" class="as-btn as-btn--primary">Enviar via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<script>
+// Função para montar a URL do WhatsApp e abrir em nova aba
+function enviarWhatsApp() {
+  var nome = document.getElementById('nome').value.trim();
+  var mensagem = document.getElementById('mensagem').value.trim();
+  // Substitua pelo seu número de WhatsApp (use apenas números, incluindo o código do país)
+  var phone = '553430454595';
+  // Monta texto de saudação + mensagem
+  var texto = encodeURIComponent('Olá, meu nome é ' + nome + '. ' + mensagem);
+  var url = 'https://wa.me/' + phone + '?text=' + texto;
+  window.open(url, '_blank');
+}
+</script>
