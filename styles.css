@@ -467,3 +467,224 @@ body { padding-top: var(--header-height); }
   .titulo-secao { font-size: 28px; margin-bottom: 50px; }
   .titulo-item { font-size: 22px; }
 }
+
+/* ===========================================================
+   Seção "O que oferecemos" - América Smarttech
+   Ajustada p/ ocupar melhor 1280px (40px margem, 1440px máx)
+   Sem mudar conteúdo ou visual
+   =========================================================== */
+
+/* CTA ------------------------------------------------------- */
+
+.offers-cta {
+  margin-top: 24px;
+}
+
+.offers-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  background: rgba(27, 179, 167, 0.08);
+  border: 1px solid rgba(27, 179, 167, 0.4);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.offers-link:hover {
+  background: rgba(27, 179, 167, 0.16);
+  border-color: rgba(27, 179, 167, 0.8);
+  box-shadow: 0 16px 48px rgba(27, 179, 167, 0.4), 0 8px 24px rgba(0,0,0,0.8);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.offers-arrow {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  margin-top: 0 !important;
+}
+
+.offers-text-cta {
+  line-height: 1.3;
+  display: inline-block;
+}
+
+/* Base da seção -------------------------------------------- */
+
+.st-offers {
+  background: linear-gradient(180deg, #0B3E62 0%, #0E4D7A 55%, #0B2C4A 100%);
+  color: #ffffff;
+  font-family: Inter, system-ui, sans-serif;
+  padding: 120px 0;
+  overflow: visible;
+}
+
+/* AQUI é onde fizemos o ajuste de largura.
+   Antes:
+     max-width: 1200px;
+     padding: 0 24px;
+   Agora:
+     max-width: 1440px;
+     padding: 0 40px;
+   gap um pouco maior pra dar mais ar entre as colunas em telas 1280.
+*/
+.st-offers__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+  position: relative;
+}
+
+/* Coluna esquerda ------------------------------------------ */
+
+.st-offers__left {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  height: fit-content;
+  z-index: 3;
+}
+
+.st-offers__title {
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: 3rem;
+  letter-spacing: -0.3px;
+  background: linear-gradient(90deg, #1BB3A7, #24D0BE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.st-offers__lead {
+  font-size: 18px;
+  color: rgba(255,255,255,0.78);
+  max-width: 500px;
+  margin: 0;
+}
+
+/* Coluna direita ------------------------------------------- */
+
+.st-offers__right {
+  display: grid;
+  gap: 96px;
+  padding-bottom: 15vh;
+  justify-items: start;
+  text-align: left;
+}
+
+.st-offers__item {
+  border: 1px solid rgba(27, 179, 167, 0.4);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+  border-radius: 18px;
+  padding: 24px 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.2;
+  transform: translateY(40px);
+}
+
+.st-offers__item.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.st-offers__item h3 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  color: #1BB3A7;
+}
+
+.st-offers__item p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.st-offers__item ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.st-offers__item li {
+  margin-bottom: 6px;
+}
+
+/* Responsivo ---------------------------------------------- */
+
+@media (max-width: 980px) {
+  .st-offers {
+    padding: 80px 0;
+  }
+
+  .st-offers__container {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 40px;
+  }
+
+  .st-offers__left {
+    position: relative;
+    top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .st-offers__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .offers-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .st-offers__right {
+    justify-items: center;
+    text-align: left;
+    padding-bottom: 10vh;
+    gap: 64px;
+  }
+
+  .st-offers__item {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .offers-link {
+    font-size: 1.25rem;
+    padding: 12px 14px;
+  }
+
+  .offers-arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
