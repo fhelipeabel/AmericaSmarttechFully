@@ -2300,4 +2300,5 @@ body { padding-top: var(--header-height); }
     bottom: calc(max(10px, env(safe-area-inset-bottom)) + 66px);
     width: min(420px, calc(100vw - 20px));
   }
+
 }
