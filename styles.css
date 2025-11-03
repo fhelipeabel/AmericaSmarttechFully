@@ -1,6 +1,3 @@
-/* =======================
-   RESET seguro p/ mobile
-   ======================= */
 html { -webkit-text-size-adjust: 100%; }
 html, body { max-width: 100%; overflow-x: hidden; margin-top: 0 !important; }
 body { margin: 0; } /* colado no topo */
@@ -9,12 +6,9 @@ img, svg { max-width: 100%; height: auto; }
 
 /* ===========================================================
    HEADER CUSTOM SMARTTECH
-   - Vidro líquido (blur + contraste)
-   - Fixo no topo
-   - Desktop + Mobile (gaveta da direita)
    =========================================================== */
 
-/* Variáveis de marca */
+/* Variáveis de marca - consolidado */
 :root {
   --as-bg-dark: rgba(10, 20, 28, 0.28);
   --as-bg-dark-solid: rgba(10, 20, 28, 0.4);
@@ -23,6 +17,33 @@ img, svg { max-width: 100%; height: auto; }
   --as-text-dim: rgba(255,255,255,0.8);
   --header-height: 80px;
   --header-radius: 16px;
+  --azul: #0E4D7A;
+  --azul-escuro: #0B3E62;
+  --teal: #1BB3A7;
+  --texto: #0B2C4A;
+  --fundo: #F7FBFF;
+  --primary:#0E4D7A;
+  --accent:#1BB3A7;
+  --ink:#0B2C4A;
+  --muted:#4E6B84;
+  --bg:#F7FBFF;
+  --card:#FFFFFF;
+  --radius:18px;
+  --shadow:0 8px 24px rgba(14,77,122,.12);
+  --as-dark:#071E32;
+  --as-ink-light:#F7FBFF;
+  --as-ink-soft:#D8E3ED;
+  --as-primary:#0E4D7A;
+  --as-accent:#1BB3A7;
+  --as-shadow:0 10px 28px rgba(0,0,0,.25);
+  --as-radius:18px;
+  --text:    #ffffff;
+  --text-dark: #03161F;
+  --asm-primary:#0E4D7A;
+  --asm-accent:#1BB3A7;
+  --asm-ink:#0B2238;
+  --asm-shadow:0 18px 40px rgba(11,34,56,.18);
+  --asm-radius:16px;
 }
 
 /* Empurra o conteúdo pra baixo do header fixo */
@@ -192,10 +213,6 @@ body { padding-top: var(--header-height); }
   box-shadow: 0 20px 40px rgba(27,179,167,0.35), 0 2px 4px rgba(0,0,0,0.6);
 }
 
-.mobile-nav-panel .mobile-cta:hover {
-  background: rgba(27,179,167,0.3);
-}
-
 /* =========================
    0) RESETES DA HERO
    — back to original layout
@@ -338,6 +355,7 @@ body { padding-top: var(--header-height); }
   margin-bottom: 16px;
 }
 
+/* ===== SOBRE ===== */
 /* =============================
    PALETA SMARTTECH
    ============================= */
@@ -468,6 +486,7 @@ body { padding-top: var(--header-height); }
   .titulo-item { font-size: 22px; }
 }
 
+/* ===== SERVIÇOS ===== */
 /* ===========================================================
    Seção "O que oferecemos" - América Smarttech
    Ajustada p/ ocupar melhor 1280px (40px margem, 1440px máx)
@@ -830,12 +849,12 @@ body { padding-top: var(--header-height); }
   box-shadow:var(--shadow);
 }
 .btn-suite--primary{
-  background:linear-gradient(135deg,var(--primary),var(--accent));
+  background: linear-gradient(135deg, var(--primary, var(--accent)));
   color:#fff;
   border:0;
 }
 .btn-suite--ghost{
-  background:transparent;
+  background: transparent;
   color:var(--primary);
   border:2px solid var(--primary);
   box-shadow:none;
@@ -1159,6 +1178,7 @@ body { padding-top: var(--header-height); }
     flex-direction:column;
   }
 }
+/* ===== PLANOS ===== */
 /* ===========================================================
    SEÇÃO "NOSSOS NÚMEROS" — versão 1440px / 40px de margem
    =========================================================== */
@@ -1397,6 +1417,8 @@ body { padding-top: var(--header-height); }
   }
 }
 
+/* ===== DEPOIMENTOS ===== */
+/* ===== BASE DA SEÇÃO (clara, irmã da suite) ===== */
 :root{
   /* As mesmas da suite (ajuste se já existirem em style.css) */
   --primary:#0E4D7A;
@@ -1408,8 +1430,6 @@ body { padding-top: var(--header-height); }
   --radius:18px;
   --shadow:0 8px 24px rgba(14,77,122,.12);
 }
-
-/* ===== BASE DA SEÇÃO (clara, irmã da suite) ===== */
 .testimonials-smarttech{
   background: var(--bg);
   padding-top: 40px;
@@ -1480,7 +1500,7 @@ body { padding-top: var(--header-height); }
   will-change: transform, opacity;
   font-size:14px; line-height:1.5;
 }
-.tst-card::after{
+.tst-card::after {
   content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
   background: linear-gradient(120deg, rgba(27,179,167,.45), rgba(14,77,122,.45));
   opacity:.4;
@@ -1489,20 +1509,20 @@ body { padding-top: var(--header-height); }
 }
 
 /* Ghost decorativo */
-.tst-card--ghost{
+.tst-card--ghost {
   width:220px; padding:16px; background:rgba(255,255,255,.7);
 }
-.tst-ghostlines{ display:grid; gap:6px; }
-.tst-ghostline{ height:6px; border-radius:4px; background:linear-gradient(90deg, rgba(14,77,122,.15), rgba(27,179,167,.4)); display:block; }
-.tst-ghostline--lg{ width:90%; } .tst-ghostline--md{ width:70%; } .tst-ghostline--sm{ width:40%; }
+.tst-ghostlines { display:grid; gap:6px; }
+.tst-ghostline { height:6px; border-radius:4px; background:linear-gradient(90deg, rgba(14,77,122,.15), rgba(27,179,167,.4)); display:block; }
+.tst-ghostline--lg { width:90%; } .tst-ghostline--md { width:70%; } .tst-ghostline--sm{ width:40%; }
 
 /* Cabeça do card (aspas + nome) */
-.tst-card__head{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
-.tst-quote{ width:20px; height:20px; color:var(--accent); opacity:.9; flex-shrink:0; }
-.tst-card__who{ font-size:13px; font-weight:700; color:var(--primary); }
+.tst-card__head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.tst-quote { width:20px; height:20px; color:var(--accent); opacity:.9; flex-shrink:0; }
+.tst-card__who { font-size:13px; font-weight:700; color:var(--primary); }
 
 /* Texto do depoimento */
-.tst-card__text{ margin:0; color:var(--ink); }
+.tst-card__text { margin:0; color:var(--ink); }
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes tstFloatBlob{ 0%,100%{ transform:translateY(0) scale(1); } 50%{ transform:translateY(-8px) scale(1.04); } }
@@ -1540,8 +1560,8 @@ body { padding-top: var(--header-height); }
   --rx:4deg;
   --ry:10deg;
   --rz:-2deg;
-  top:160px;
-  left:220px;
+  top:170px;
+  left:210px;
   z-index:4;
 }
 
@@ -1637,7 +1657,7 @@ body { padding-top: var(--header-height); }
 .card-dark{
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: var(--as-radius);
+  border-radius:  var(--as-radius);
   box-shadow: var(--as-shadow);
   padding: 26px;
   backdrop-filter: saturate(1.1) blur(2px);
@@ -1840,16 +1860,6 @@ body { padding-top: var(--header-height); }
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
-  .as-contact__container {
-    padding: 24px;
-  }
-  .as-contact__title {
-    font-size: 28px;
-  }
-}
-
 /* ============================================
    FAQ - Estilo América Smarttech / Oferecemos
    ============================================ */
@@ -1927,13 +1937,6 @@ body { padding-top: var(--header-height); }
 .faq-item.is-in {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Remover default feio do <details> */
-.faq-item[open] {
-  /* quando aberto, podemos intensificar levemente a borda */
-  border-color: rgba(27,179,167,0.7);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 24px rgba(27,179,167,0.4);
 }
 
 /* summary = pergunta */
