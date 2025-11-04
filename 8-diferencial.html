@@ -1,3 +1,170 @@
+<style>
+/* ========= PALETA E TOKENS ========= */
+:root{
+  --as-dark:#071E32;
+  --as-ink-light:#F7FBFF;
+  --as-ink-soft:#D8E3ED;
+  --as-primary:#0E4D7A;
+  --as-accent:#1BB3A7;
+  --as-shadow:0 10px 28px rgba(0,0,0,.25);
+  --as-radius:18px;
+}
+
+/* ========= SEÇÃO ========= */
+.diferencial-dark{
+  position: relative;
+  padding: 84px 0;
+  background: radial-gradient(1200px 600px at 90% -10%, rgba(27,179,167,.1), transparent), var(--as-dark);
+  color: var(--as-ink-light);
+  overflow: hidden;
+  isolation: isolate;
+}
+.diferencial__bg-blob{
+  position:absolute; inset: -200px -220px auto auto;
+  width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(27,179,167,.18), transparent);
+  filter: blur(2px);
+  animation: float 8s ease-in-out infinite;
+  z-index: -1;
+}
+.diferencial__head{
+  text-align: left;
+}
+.diferencial__eyebrow{
+  display:inline-flex; gap:10px; padding:8px 12px; border-radius:999px;
+  background: rgba(27,179,167,.14); color:#7BE1D6; font-weight:700; font-size:14px;
+}
+.diferencial-dark h2{
+  margin:14px 0 10px; font-size:36px; line-height:1.15; letter-spacing:-.2px; font-family: nunito, Inter, sans-serif;
+}
+.diferencial-dark .lead{
+  color: var(--as-ink-soft); font-size:18px; max-width: 760px;
+}
+
+/* ========= GRID ========= */
+.diferencial__grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:28px;
+  align-items:start;
+  margin-top:32px;
+}
+
+/* ========= CARDS ========= */
+.card-dark{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius:  var(--as-radius);
+  box-shadow: var(--as-shadow);
+  padding: 26px;
+  backdrop-filter: saturate(1.1) blur(2px);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card-dark:hover{
+  transform: translateY(-4px);
+  border-color: rgba(27,179,167,.35);
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+}
+.card-dark h3{
+  color:#1BB3A7;
+  margin:6px 0 8px;
+  font-size: clamp(22px, 2.4vw, 30px);
+}
+.card-dark p{
+  color: var(--as-ink-soft);
+  line-height:1.6;
+}
+.list{
+  margin: 10px 0 0 18px;
+  line-height:1.6;
+  color: var(--as-ink-light);
+}
+.list li{
+  margin-bottom:6px;
+}
+
+/* ========= ÍCONES ========= */
+.card-dark__icon{ margin-bottom:10px; }
+.icon{
+  width:64px;
+  height:64px;
+  display:block;
+  animation: spin 16s linear infinite;
+  transform-origin:center;
+}
+.gear-wrap{ position:relative; }
+
+/* ========= BADGES ========= */
+.badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.badge{
+  background: rgba(27,179,167,.14);
+  color:#7BE1D6;
+  padding:6px 12px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+}
+
+/* ========= CTAS ========= */
+.cta-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+  transition: transform .2s ease, box-shadow .2s ease, background-position .4s ease;
+  will-change: transform;
+}
+.btn--primary{
+  color:#fff;
+  background: linear-gradient(135deg, var(--as-primary), var(--as-accent));
+  background-size: 150% 150%;
+  box-shadow: 0 8px 22px rgba(27,179,167,.25);
+}
+.btn--primary:hover{
+  transform: translateY(-2px);
+  background-position: 80% 0%;
+  box-shadow: 0 10px 26px rgba(27,179,167,.35);
+}
+.btn--ghost{
+  color: var(--as-ink-light);
+  border:2px solid rgba(255,255,255,.35);
+  background: transparent;
+}
+.btn--ghost:hover{
+  transform: translateY(-2px);
+  border-color: #9EE7DD;
+  box-shadow: 0 6px 20px rgba(158,231,221,.2);
+}
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes spin{ to{ transform: rotate(360deg); } }
+@keyframes float{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+
+/* ========= RESPONSIVO ========= */
+@media (max-width:980px){
+  .diferencial__grid{
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
 <!-- SEÇÃO DIFERENCIAL — MODO DARK SMARTTECH -->
 <section id="diferencial" class="diferencial-dark">
   <div class="diferencial__bg-blob" aria-hidden="true"></div>

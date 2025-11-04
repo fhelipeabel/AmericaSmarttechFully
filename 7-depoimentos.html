@@ -1,124 +1,330 @@
 <!-- TESTIMONIALS BASEADOS NA "SUITE" -->
-<section class="testimonials-smarttech">
-  <div class="tst__bg-blur" aria-hidden="true"></div>
+<style>
+/* ===== DEPOIMENTOS ===== */
+/* ===== BASE DA SEÇÃO (clara, irmã da suite) ===== */
+:root{
+  /* As mesmas da suite (ajuste se já existirem em style.css) */
+  --primary:#0E4D7A;
+  --accent:#1BB3A7;
+  --ink:#0B2C4A;
+  --muted:#4E6B84;
+  --bg:#F7FBFF;
+  --card:#FFFFFF;
+  --radius:18px;
+  --shadow:0 8px 24px rgba(14,77,122,.12);
+}
+.testimonials-smarttech{
+  background: var(--bg);
+  padding-top: 40px;
+  padding-bottom: 20px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  color:var(--ink);
+  font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+}
+.tst__bg-blur{
+  position:absolute;
+  inset:-200px auto auto -200px;
+  width:520px; height:520px;
+  background: radial-gradient(circle at 20% 20%, rgba(27,179,167,.18) 0%, rgba(14,77,122,0) 70%);
+  filter: blur(40px);
+  opacity:.5;
+  animation: tstFloatBlob 8s ease-in-out infinite;
+  z-index:0;
+}
 
-  <div class="tst__inner">
-    <!-- COLUNA ESQUERDA -->
+/* container 1440 / 40px e grid 2 colunas como a suite */
+.tst__inner{
+  max-width:1440px;
+  margin:0 auto;
+  padding:0 40px;
+
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:minmax(320px,1fr) minmax(380px,1fr);
+  gap:48px;
+  align-items:start;
+}
+
+/* ===== COLUNA ESQUERDA ===== */
+.tst__eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:12px; padding:8px 12px; border-radius:999px;
+  background:rgba(27,179,167,.12); color:#159687; font-weight:700; font-size:14px;
+  border:1px solid rgba(27,179,167,.3);
+}
+.tst__eyebrow-icon{ width:20px; height:20px; animation:tstSpin 6s linear infinite; transform-origin:center; }
+.tst__title{
+  margin:16px 0 14px; font-size:36px; line-height:1.15; font-weight:800; letter-spacing:-.3px; color:var(--ink);
+}
+.grad-text{ color:var(--accent); }
+.tst__lead{ font-size:18px; line-height:1.5; color:var(--muted); max-width:720px; margin:0; }
+
+/* ===== CANVAS DE CARDS ===== */
+.tst__canvas{
+  position:relative;
+  min-height:600px;
+  perspective:1200px;
+}
+
+/* Card base herdando o "glass-lite" claro */
+.tst-card{
+  position:absolute;
+  background: rgba(255,255,255,.9);
+  border-radius: var(--radius);
+  border:1px solid rgba(14,77,122,.12);
+  box-shadow: 0 30px 80px rgba(7,30,50,.12);
+  padding:18px 18px 16px;
+  width:280px;
+  color: var(--ink);
+  transform-origin:center;
+  will-change: transform, opacity;
+  font-size:14px; line-height:1.5;
+}
+.tst-card::after {
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background: linear-gradient(120deg, rgba(27,179,167,.45), rgba(14,77,122,.45));
+  opacity:.4;
+  -webkit-mask: linear-gradient(#000,#000) padding-box, linear-gradient(transparent,transparent) border-box;
+  border:1px solid transparent;
+}
+
+/* Ghost decorativo */
+.tst-card--ghost {
+  width:220px; padding:16px; background:rgba(255,255,255,.7);
+}
+.tst-ghostlines { display:grid; gap:6px; }
+.tst-ghostline { height:6px; border-radius:4px; background:linear-gradient(90deg, rgba(14,77,122,.15), rgba(27,179,167,.4)); display:block; }
+.tst-ghostline--lg { width:90%; } .tst-ghostline--md { width:70%; } .tst-ghostline--sm{ width:40%; }
+
+/* Cabeça do card (aspas + nome) */
+.tst-card__head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.tst-quote { width:20px; height:20px; color:var(--accent); opacity:.9; flex-shrink:0; }
+.tst-card__who { font-size:13px; font-weight:700; color:var(--primary); }
+
+/* Texto do depoimento */
+.tst-card__text { margin:0; color:var(--ink); }
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes tstFloatBlob{ 0%,100%{ transform:translateY(0) scale(1); } 50%{ transform:translateY(-8px) scale(1.04); } }
+@keyframes tstSpin{ to{ transform:rotate(360deg); } }
+
+.animate-float{ animation: tstFloat 6s ease-in-out infinite; }
+.animate-float-delayed{ animation: tstFloat 6s ease-in-out infinite; animation-delay:.8s; }
+@keyframes tstFloat{
+  0%,100%{ transform: translateY(0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateZ(var(--rz,0deg)); }
+  50%{ transform: translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateZ(var(--rz,0deg)); }
+}
+
+/* reveal */
+.observe{ opacity:.15; transform:translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.observe.in{ opacity:1; transform:translateY(0); }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width:980px){
+  .tst__inner{ grid-template-columns:1fr; }
+  .tst__canvas{ min-height:auto; perspective:none; display:flex; flex-direction:column; gap:16px; }
+  .tst-card{ position:relative; width:100%; transform:none !important; animation:none; }
+  .tst-card--ghost{ display:none; }
+}
+
+.tst__canvas .tst-card:nth-of-type(1) {
+  --rx:0deg;
+  --ry:-8deg;
+  --rz:0deg;
+  top:0;
+  left:0;
+  z-index:5;
+}
+
+.tst__canvas .tst-card:nth-of-type(2) {
+  --rx:4deg;
+  --ry:10deg;
+  --rz:-2deg;
+  top:170px;
+  left:210px;
+  z-index:4;
+}
+
+.tst__canvas .tst-card:nth-of-type(3) {
+  --rx:-2deg;
+  --ry:-6deg;
+  --rz:1deg;
+  top:330px;
+  left:18px;
+  z-index:3;
+}
+
+.tst__canvas .tst-card:nth-of-type(4) {
+  --rx:2deg;
+  --ry:4deg;
+  --rz:2deg;
+  top:300px;
+  left:308px;
+  z-index:3;
+}
+
+.tst__canvas .tst-card:nth-of-type(5) {
+  --rx:-4deg;
+  --ry:-12deg;
+  --rz:2deg;
+  top:10px;
+  right:-6px;
+  z-index:4;
+  width:260px;
+}
+
+.tst__canvas .tst-card:nth-of-type(6) {
+  --rx:6deg;
+  --ry:16deg;
+  --rz:-4deg;
+  top:90px;
+  left:260px;
+  z-index:2;
+}
+
+.observe {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+</style>
+
+<section id="depoimentos" class="testimonials-smarttech">
+  <div class="tst__bg-blur" aria-hidden="true"></div>
+  <div class="tst__inner container">
+
+    <!-- COLUNA ESQUERDA / COPY PRINCIPAL -->
     <header class="tst__intro">
       <span class="tst__eyebrow">
-        <svg class="tst__eyebrow-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <svg class="tst__eyebrow-icon" viewBox="0 0 64 64">
           <defs>
-            <linearGradient id="tst-eyebrow-grad" x1="0" x2="1">
+            <linearGradient id="testimonials-grad" x1="0" x2="1">
               <stop offset="0%" stop-color="#0E4D7A"/>
               <stop offset="100%" stop-color="#1BB3A7"/>
             </linearGradient>
           </defs>
-          <circle cx="32" cy="32" r="28" fill="none" stroke="url(#tst-eyebrow-grad)" stroke-width="4"/>
-          <path d="M20 33l7 7 17-17" fill="none" stroke="url(#tst-eyebrow-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="url(#testimonials-grad)" stroke-width="4"/>
+          <path d="M20 33l7 7 17-17" fill="none" stroke="url(#testimonials-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Histórias reais
+        Depoimentos dos clientes
       </span>
 
       <h2 class="tst__title">
-        O que clientes <span class="grad-text">dizem da Smarttech</span>
+        Veja o que nossos <span class="grad-text">parceiros falam</span>.
       </h2>
 
       <p class="tst__lead">
-        Depoimentos de quem já implantou: redução de erros, velocidade no caixa, relatórios que viram decisão e suporte próximo no dia a dia.
+        Empresários que confiaram na América Smarttech e transformaram 
+        seus negócios com nossas soluções integradas.
       </p>
     </header>
 
-    <!-- COLUNA DIREITA / CANVAS DE CARDS -->
-    <div class="tst__canvas" aria-label="Mosaico animado de depoimentos">
-      <!-- CARD 1 -->
-      <article class="tst-card animate-float observe" style="--rx:0deg; --ry:-8deg; --rz:0deg; top:0; left:0; z-index:5;">
+    <!-- COLUNA DIREITA / CANVAS DE DEPOIMENTOS -->
+    <div class="tst__canvas">
+
+      <!-- DEPOIMENTO 1 -->
+      <article class="tst-card animate-float observe">
         <div class="tst-card__head">
-          <svg class="tst-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h5v5H9v5H4v-5c0-2.76 2.24-5 5-5zm10 0h5v5h-3v5h-5v-5c0-2.76 2.24-5 5-5z" fill="currentColor"/></svg>
-          <strong class="tst-card__who">Carla S. — Varejo alimentar</strong>
+          <svg class="tst-quote" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z"/>
+          </svg>
+          <strong class="tst-card__who">João Silva - Supermercado Silva</strong>
         </div>
-        <p class="tst-card__text">“A automação reduziu erros e deu mais velocidade ao caixa. Os relatórios nos ajudaram a ajustar o mix.”</p>
+        <p class="tst-card__text">
+          "A América Smarttech revolucionou nosso supermercado. O PDV é rápido, 
+          a emissão fiscal automática e o controle de estoque impecável. 
+          Aumentamos nossa produtividade em 40%."
+        </p>
       </article>
 
-      <!-- CARD 2 -->
-      <article class="tst-card animate-float-delayed observe" style="--rx:4deg; --ry:10deg; --rz:-2deg; top:160px; left:220px; z-index:4;">
+      <!-- DEPOIMENTO 2 -->
+      <article class="tst-card animate-float-delayed observe">
         <div class="tst-card__head">
-          <svg class="tst-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h5v5H9v5H4v-5c0-2.76 2.24-5 5-5zm10 0h5v5h-3v5h-5v-5c0-2.76 2.24-5 5-5z" fill="currentColor"/></svg>
-          <strong class="tst-card__who">Rafael M. — Materiais de construção</strong>
+          <svg class="tst-quote" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z"/>
+          </svg>
+          <strong class="tst-card__who">Maria Costa - Restaurante Tempero</strong>
         </div>
-        <p class="tst-card__text">“Equipe próxima no pós-implantação, resolvendo rápido e orientando melhorias.”</p>
+        <p class="tst-card__text">
+          "O sistema de mesas do restaurante é fantástico! Os garçons fazem 
+          pedidos direto no tablet e tudo sincroniza com a cozinha. 
+          Nosso atendimento ficou muito mais eficiente."
+        </p>
       </article>
 
-      <!-- CARD 3 -->
-      <article class="tst-card observe" style="--rx:-2deg; --ry:-6deg; --rz:1deg; top:330px; left:18px; z-index:3;">
+      <!-- DEPOIMENTO 3 -->
+      <article class="tst-card animate-float observe">
         <div class="tst-card__head">
-          <svg class="tst-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h5v5H9v5H4v-5c0-2.76 2.24-5 5-5zm10 0h5v5h-3v5h-5v-5c0-2.76 2.24-5 5-5z" fill="currentColor"/></svg>
-          <strong class="tst-card__who">Juliana P. — Moda</strong>
+          <svg class="tst-quote" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z"/>
+          </svg>
+          <strong class="tst-card__who">Carlos Mendes - Transportadora Rápida</strong>
         </div>
-        <p class="tst-card__text">“Implementação tranquila e dashboards que os gestores realmente usam.”</p>
+        <p class="tst-card__text">
+          "A emissão de CT-e ficou muito simples. Em segundos autorizamos 
+          a saída dos veículos. O suporte técnico é excelente e sempre 
+          nos atende rapidamente."
+        </p>
       </article>
 
-      <!-- CARD 4 (novo) -->
-      <article class="tst-card observe" style="--rx:2deg; --ry:4deg; --rz:2deg; top:300px; left:308px; z-index:3;">
+      <!-- DEPOIMENTO 4 -->
+      <article class="tst-card animate-float-delayed observe">
         <div class="tst-card__head">
-          <svg class="tst-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h5v5H9v5H4v-5c0-2.76 2.24-5 5-5zm10 0h5v5h-3v5h-5v-5c0-2.76 2.24-5 5-5z" fill="currentColor"/></svg>
-          <strong class="tst-card__who">Marcelo T. — Atacado</strong>
+          <svg class="tst-quote" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z"/>
+          </svg>
+          <strong class="tst-card__who">Ana Oliveira - Loja Bella Moda</strong>
         </div>
-        <p class="tst-card__text">“Integrações fiscais redondas. O suporte nos guiou nos primeiros fechamentos sem dor de cabeça.”</p>
+        <p class="tst-card__text">
+          "O WhatsApp automático mudou nossa vida! Os orçamentos são enviados 
+          automaticamente para os clientes. Nossas vendas aumentaram 60% 
+          desde que começamos a usar."
+        </p>
       </article>
 
-      <!-- CARD 5 (novo) -->
-      <article class="tst-card observe" style="--rx:-4deg; --ry:-12deg; --rz:2deg; top:10px; right:-6px; z-index:4; width:260px;">
+      <!-- DEPOIMENTO 5 -->
+      <article class="tst-card animate-float observe">
         <div class="tst-card__head">
-          <svg class="tst-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h5v5H9v5H4v-5c0-2.76 2.24-5 5-5zm10 0h5v5h-3v5h-5v-5c0-2.76 2.24-5 5-5z" fill="currentColor"/></svg>
-          <strong class="tst-card__who">Bianca L. — Restaurante</strong>
+          <svg class="tst-quote" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z"/>
+          </svg>
+          <strong class="tst-card__who">Roberto Santos - Distribuidora Santos</strong>
         </div>
-        <p class="tst-card__text">“O módulo de mesas agilizou o salão e o delivery. A operação ficou visível em tempo real.”</p>
+        <p class="tst-card__text">
+          "A integração total do sistema é impressionante. Vendas, estoque, 
+          fiscal, tudo conectado. Conseguimos ter controle completo da 
+          nossa operação em tempo real."
+        </p>
       </article>
 
-      <!-- CARD GHOST (decorativo) -->
-      <article class="tst-card tst-card--ghost" style="--rx:6deg; --ry:16deg; --rz:-4deg; top:90px; left:260px; z-index:2;">
+      <!-- CARD GHOST DECORATIVO -->
+      <article class="tst-card tst-card--ghost">
         <div class="tst-ghostlines">
           <span class="tst-ghostline tst-ghostline--lg"></span>
           <span class="tst-ghostline tst-ghostline--md"></span>
           <span class="tst-ghostline tst-ghostline--sm"></span>
         </div>
       </article>
+
     </div>
   </div>
 </section>
 
 <script>
-/* ===== IntersectionObserver: reveal suave ===== */
-(() => {
-  const items = document.querySelectorAll('.tst-card.observe');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach((e)=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
-  }, { threshold: 0.2 });
-  items.forEach((el,i)=>{ el.style.transitionDelay = (i*80)+'ms'; io.observe(el); });
-})();
+// IntersectionObserver para animação de entrada
+const observeElements = document.querySelectorAll('.observe');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+    } else {
+      entry.target.classList.remove('in');
+    }
+  });
+}, { threshold: 0.3 });
 
-/* ===== Tilt sutil no mouse (aplica no canvas) ===== */
-(() => {
-  const canvas = document.querySelector('.tst__canvas');
-  if(!canvas) return;
-  const maxTilt = 6; // graus máximos
-  canvas.addEventListener('mousemove', (e)=>{
-    const r = canvas.getBoundingClientRect();
-    const cx = r.left + r.width/2, cy = r.top + r.height/2;
-    const dx = (e.clientX - cx) / (r.width/2);
-    const dy = (e.clientY - cy) / (r.height/2);
-    const rx = (dy * -maxTilt).toFixed(2)+'deg';
-    const ry = (dx *  maxTilt).toFixed(2)+'deg';
-    canvas.querySelectorAll('.tst-card').forEach(card=>{
-      card.style.setProperty('--rx', rx);
-      card.style.setProperty('--ry', ry);
-    });
-  });
-  canvas.addEventListener('mouseleave', ()=>{
-    canvas.querySelectorAll('.tst-card').forEach(card=>{
-      card.style.setProperty('--rx', '0deg');
-      card.style.setProperty('--ry', '0deg');
-    });
-  });
-})();
+observeElements.forEach(el => observer.observe(el));
 </script>

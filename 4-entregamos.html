@@ -118,83 +118,350 @@
   </div>
 </section>
 
+<style>
+/* ===== SERVIÇOS ===== */
+/* ===========================================================
+   Seção "O que oferecemos" - América Smarttech
+   Ajustada p/ ocupar melhor 1280px (40px margem, 1440px máx)
+   Sem mudar conteúdo ou visual
+   =========================================================== */
+
+/* CTA ------------------------------------------------------- */
+
+#oferecemos .offers-cta {
+  margin-top: 24px;
+}
+
+#oferecemos .offers-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  background: rgba(27, 179, 167, 0.08);
+  border: 1px solid rgba(27, 179, 167, 0.4);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#oferecemos .offers-link:hover {
+  background: rgba(27, 179, 167, 0.16);
+  border-color: rgba(27, 179, 167, 0.8);
+  box-shadow: 0 16px 48px rgba(27, 179, 167, 0.4), 0 8px 24px rgba(0,0,0,0.8);
+  transform: translateY(-2px) scale(1.02);
+}
+
+#oferecemos .offers-arrow {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  margin-top: 0 !important;
+}
+
+#oferecemos .offers-text-cta {
+  line-height: 1.3;
+  display: inline-block;
+}
+
+/* Base da seção -------------------------------------------- */
+
+#oferecemos {
+  background: linear-gradient(180deg, #0B3E62 0%, #0E4D7A 55%, #0B2C4A 100%);
+  color: #ffffff;
+  font-family: Inter, system-ui, sans-serif;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+#oferecemos .st-offers__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+  position: relative;
+
+  min-height: auto;
+}
+
+/* Coluna esquerda ------------------------------------------ */
+
+#oferecemos .st-offers__left {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  height: fit-content;
+  z-index: 10;
+  will-change: transform;
+}
+
+#oferecemos .st-offers__title {
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: 3rem;
+  letter-spacing: -0.3px;
+  background: linear-gradient(90deg, #1BB3A7, #24D0BE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#oferecemos .st-offers__lead {
+  font-size: 18px;
+  color: rgba(255,255,255,0.78);
+  max-width: 500px;
+  margin: 0;
+}
+
+/* Coluna direita ------------------------------------------- */
+
+#oferecemos .st-offers__right {
+  display: grid;
+  gap: 96px;
+  padding-bottom: 15vh;
+  justify-items: start;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+#oferecemos .st-offers__item {
+  border: 1px solid rgba(27, 179, 167, 0.4);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+  border-radius: 18px;
+  padding: 24px 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.2;
+  transform: translateY(40px);
+}
+
+#oferecemos .st-offers__item.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#oferecemos .st-offers__item h3 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  color: #1BB3A7;
+}
+
+#oferecemos .st-offers__item p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+#oferecemos .st-offers__item ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+#oferecemos .st-offers__item li {
+  margin-bottom: 6px;
+}
+
+/* Responsivo ---------------------------------------------- */
+
+@media (max-width: 980px) {
+  #oferecemos {
+    padding: 80px 0;
+  }
+
+  #oferecemos .st-offers__container {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 40px;
+  }
+  
+  #oferecemos .st-offers__left {
+    position: relative;
+    top: 0;
+    text-align: center;
+  }
+
+  #oferecemos .st-offers__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #oferecemos .offers-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  #oferecemos .st-offers__right {
+    justify-items: center;
+    text-align: left;
+    padding-bottom: 10vh;
+    gap: 64px;
+  }
+
+  #oferecemos .st-offers__item {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  #oferecemos .offers-link {
+    font-size: 1.25rem;
+    padding: 12px 14px;
+  }
+
+  #oferecemos .offers-arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Ajustes para as seções com scroll */
+#oferecemos,
+.st-metrics {
+  isolation: isolate;
+  position: relative;
+  overflow: visible;
+}
+
+/* Coluna esquerda sticky */
+#oferecemos .st-offers__left,
+.st-metrics__left {
+  position: sticky;
+  top: 96px; /* distância do topo quando ficar sticky */
+  align-self: start;
+  height: fit-content;
+  z-index: 10;
+}
+
+/* Coluna direita scrollável */
+#oferecemos .st-offers__right,
+.st-metrics__right {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 15vh; /* espaço após o último item */
+}
+
+/* Container principal ajustado */
+#oferecemos .st-offers__container,
+.st-metrics__container {
+  min-height: 100vh; /* garante altura mínima para scroll */
+}
+
+/* Polyfill para navegadores sem suporte a position: sticky */
+@supports not (position: sticky) {
+  #oferecemos .st-offers__left {
+    position: -webkit-sticky;
+  }
+}
+
+/* Ajuste mobile */
+@media (max-width: 980px) {
+  #oferecemos .st-offers__left,
+  .st-metrics__left {
+    position: relative;
+    top: 0;
+  }
+}
+</style>
+
 <script>
-/* ===========================================================
-   IntersectionObserver para animar a entrada dos cards
-   =========================================================== */
-const stOffersItems = document.querySelectorAll('.st-offers__item');
+  /* ===========================================================
+     IntersectionObserver para animar a entrada dos cards
+     =========================================================== */
+  const stOffersItems = document.querySelectorAll('.st-offers__item');
 
-const stOffersObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-in');
-      } else {
-        entry.target.classList.remove('is-in');
-      }
-    });
-  },
-  {
-    threshold: 0.3
-  }
-);
-
-stOffersItems.forEach((item) => stOffersObserver.observe(item));
-
-/* ===========================================================
-   Fallback manual para sticky (caso algum browser não respeite)
-   =========================================================== */
-
-(function () {
-  const section = document.querySelector('#oferecemos');
-  const container = section ? section.querySelector('.st-offers__container') : null;
-  const left = section ? section.querySelector('.st-offers__left') : null;
-
-  if (!section || !left || !container) {
-    return;
-  }
-
-  const test = document.createElement('div');
-  test.style.position = 'sticky';
-
-  if (test.style.position === 'sticky') {
-    return; // sticky suportado nativamente
-  }
-
-  container.style.position = 'relative';
-
-  const offset = 96;
-
-  const updateStickyFallback = () => {
-    const rect = section.getBoundingClientRect();
-    const docTop = window.scrollY || window.pageYOffset;
-    const start = rect.top + docTop;
-    const end = rect.bottom + docTop - left.offsetHeight - offset;
-    const y = docTop;
-    const leftRect = container.getBoundingClientRect();
-
-    if (y < start) {
-      left.style.position = 'absolute';
-      left.style.top = '0';
-      left.style.left = '0';
-      left.style.width = '';
-    } else if (y >= start && y <= end) {
-      left.style.position = 'fixed';
-      left.style.top = offset + 'px';
-      left.style.left = leftRect.left + 'px';
-
-      // mantém proporção da coluna esquerda (1.1fr de um total 1.1+1.4)
-      const proporcaoEsquerda = 1.1 / (1.1 + 1.4);
-      left.style.width = (leftRect.width * proporcaoEsquerda) + 'px';
-    } else {
-      left.style.position = 'absolute';
-      left.style.top = (end - start + offset) + 'px';
-      left.style.left = '0';
+  const stOffersObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+        } else {
+          entry.target.classList.remove('is-in');
+        }
+      });
+    },
+    {
+      threshold: 0.3
     }
-  };
+  );
 
-  window.addEventListener('scroll', updateStickyFallback, { passive: true });
-  window.addEventListener('resize', updateStickyFallback);
-  updateStickyFallback();
-})();
+  stOffersItems.forEach((item) => stOffersObserver.observe(item));
+
+  /* ===========================================================
+     Fallback manual para sticky (caso algum browser não respeite)
+     =========================================================== */
+
+  (function () {
+    const section = document.querySelector('#oferecemos');
+    const container = section ? section.querySelector('.st-offers__container') : null;
+    const left = section ? section.querySelector('.st-offers__left') : null;
+
+    if (!section || !left || !container) {
+      return;
+    }
+
+    const test = document.createElement('div');
+    test.style.position = 'sticky';
+
+    if (test.style.position === 'sticky') {
+      return; // sticky suportado nativamente
+    }
+
+    container.style.position = 'relative';
+
+    const offset = 96;
+
+    const updateStickyFallback = () => {
+      const rect = section.getBoundingClientRect();
+      const docTop = window.scrollY || window.pageYOffset;
+      const start = rect.top + docTop;
+      const end = rect.bottom + docTop - left.offsetHeight - offset;
+      const y = docTop;
+      const leftRect = container.getBoundingClientRect();
+
+      if (y < start) {
+        left.style.position = 'absolute';
+        left.style.top = '0';
+        left.style.left = '0';
+        left.style.width = '';
+      } else if (y >= start && y <= end) {
+        left.style.position = 'fixed';
+        left.style.top = offset + 'px';
+        left.style.left = leftRect.left + 'px';
+
+        // mantém proporção da coluna esquerda (1.1fr de um total 1.1+1.4)
+        const proporcaoEsquerda = 1.1 / (1.1 + 1.4);
+        left.style.width = (leftRect.width * proporcaoEsquerda) + 'px';
+      } else {
+        left.style.position = 'absolute';
+        left.style.top = (end - start + offset) + 'px';
+        left.style.left = '0';
+      }
+    };
+
+    window.addEventListener('scroll', updateStickyFallback, { passive: true });
+    window.addEventListener('resize', updateStickyFallback);
+    updateStickyFallback();
+  })();
 </script>
