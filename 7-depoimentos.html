@@ -82,6 +82,8 @@
   transform-origin:center;
   will-change: transform, opacity;
   font-size:14px; line-height:1.5;
+  --tx: 0px;
+  translate: var(--tx) 0;
 }
 .tst-card::after {
   content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
@@ -171,7 +173,8 @@
   --ry:-12deg;
   --rz:2deg;
   top:10px;
-  right:-6px;
+  right:0;
+  --tx: 6px;
   z-index:4;
   width:260px;
 }

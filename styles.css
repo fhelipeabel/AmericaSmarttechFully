@@ -7,7 +7,6 @@ html {
 html, body { 
   max-width: 100%; 
   width: 100%;
-  overflow-x: hidden; 
   margin-top: 0 !important; 
 }
 
@@ -211,16 +210,33 @@ body { padding-top: var(--header-height); }
   box-shadow: 0 4px 12px rgba(27,179,167,0.35);
 }
 
-.as-footer__container,
-/* adicione outros containers principais aqui */ {
+/* Corrigido: remover vírgula sobrando que quebrava o parser */
+.as-footer__container {
   width: 100%;
   min-width: 100%;
 }
 
 /* ===========================================================
    SEÇÕES COM BACKGROUND FULL WIDTH
+   - Não aplicar full-bleed a todas as sections por padrão
+   - Use a classe .as-full-bleed quando precisar de background/full-width
    =========================================================== */
-section, .section, .as-footer {
+
+/* Antes: todas as section/.section/.as-footer eram forçadas a 100vw,
+   o que deslocava o conteúdo em alguns navegadores. Agora usam 100%. */
+section,
+.section,
+.as-footer {
+  width: 100%;
+  position: relative;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Utilitário: aplicar full-bleed somente quando necessário */
+.as-full-bleed {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -229,10 +245,21 @@ section, .section, .as-footer {
   margin-right: -50vw;
 }
 
-section > *, .section > *, .as-footer > * {
+/* Conteúdo interno continua centralizado e com padding */
+section > *,
+.section > *,
+.as-footer > * {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }

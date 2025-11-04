@@ -427,6 +427,8 @@
   will-change:transform;
   font-size:14px;
   line-height:1.4;
+  --tx: 0px;
+  translate: var(--tx) 0;
 }
 .suite-card__head{
   display:flex;
@@ -613,8 +615,9 @@
 }
 .card--side{
   top:20px;
-  right:-10px;
+  right:0;
   width:230px;
+  --tx: 10px;
   transform:rotateX(-4deg) rotateY(-12deg) rotateZ(2deg);
   z-index:4;
   box-shadow:0 24px 60px rgba(7,30,50,.18);
